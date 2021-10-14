@@ -46,15 +46,15 @@
           %div
             = image_tag post.picture.url if post.picture?
         .card-body-comments.new{ :id => "post-id-#{post.id}" }
-          = link_to new_post_comment_path(post),  { class: 'tooltipped', 'data-position': 'bottom', 'data-tooltip': t('shared.general.post.comment')}, method: :get, remote: true do
+          = link_to new_post_comment_path(post), method: :get, remote: true do
             %i.material-icons mode_comment
           = post.comments.count
           - pre_like = post.likes.find { |like| like.user_id == current_user.id}
           - if pre_like
-            = link_to post_like_path(post, pre_like), { class: 'tooltipped', 'data-position': 'bottom', 'data-tooltip': t('shared.general.post.like')}, method: :delete do
+            = link_to post_like_path(post, pre_like), method: :delete do
               %i.material-icons thumb_down
           - else
-            = link_to post_likes_path(post), { class: 'tooltipped', 'data-position': 'bottom', 'data-tooltip': t('shared.general.post.dislike')}, method: :post do
+            = link_to post_likes_path(post), method: :post do
               %i.material-icons thumb_up
           = post.likes.count
         .card-footer

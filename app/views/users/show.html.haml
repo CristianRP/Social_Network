@@ -6,28 +6,28 @@
         = link_to "Search friends", profiles_path, class: "waves-effect waves-light btn-small right", style: "top: 20px"
         %hr
         - if @user.friends.presence
-          %ul.collapsible
+          %ul
             %li
-              .collapsible-header
+              .div
                 %i.material-icons{style: 'color: green;'}> toggle_on
                 = t('shared.left_sidebar.friends.online')
-              .collapsible-body
+              .div
                 %ol
                 - User.friends_online(@user).each do |friend|
                   = render 'friends_list', friend: friend
             %li
-              .collapsible-header
+              .div
                 %i.material-icons{style: 'color: gray;'}> toggle_off
                 = t('shared.left_sidebar.friends.offline')
-              .collapsible-body
+              .div
                 %ol
                 - User.friends_offline(@user).each do |friend|
                   = render 'friends_list', friend: friend
             %li
-              .collapsible-header
+              .div
                 %i.material-icons{style: 'color: black;'}> list
                 = t('shared.left_sidebar.friends.all')
-              .collapsible-body
+              .div
                 %ol
                 - @user.friends.each do |friend|
                   = render 'friends_list', friend: friend
